@@ -1,6 +1,9 @@
 const redux = require('redux');
+const reduxLogger = require('redux-logger')
 const createStore = redux.createStore
 const combineReducers = redux.combineReducers
+const middleware = redux.applyMiddleware
+const logger = reduxLogger.createLogger()
 
 // Actions
 const BUY_CAKE = 'BUY_CAKE'
@@ -80,13 +83,13 @@ const rootReducer = combineReducers({
 
 // create a store
 // const store = createStore(reducer)
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, middleware(logger))
 
 // store now exposes the getState() method()
 console.log('Initial state : ', store.getState());
 
 // subscribe the store to get the application state
-const unSubscribe = store.subscribe(() => console.log('Updated state : ', store.getState()));
+const unSubscribe = store.subscribe(() => {});
 
 // update the store by dispatching an action
 store.dispatch(buyCake());
