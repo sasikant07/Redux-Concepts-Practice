@@ -10,6 +10,7 @@ const logger = reduxLogger.createLogger()
 // Actions
 const BUY_CAKE = 'BUY_CAKE'
 const CAKE_RESTOCKED = 'CAKE_RESTOCKED'
+
 const BUY_ICECREAM = 'BUY_ICECREAM'
 
 // Action creator
