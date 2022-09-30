@@ -14,6 +14,7 @@ function buyCake() {
     return {
         type: BUY_CAKE,
         info: 'First redux action'  // payload
+        // quantity: 1
     }
 }
 
@@ -88,8 +89,10 @@ const store = createStore(rootReducer, middleware(logger))
 // store now exposes the getState() method()
 console.log('Initial state : ', store.getState());
 
-// subscribe the store to get the application state
-const unSubscribe = store.subscribe(() => {});
+/* ======= subscribe the store to get the application state ======= */
+// store.subscribe(() => console.log('Update state', store.getState()));
+// const unSubscribe = store.subscribe(() => {});
+const unSubscribe = store.subscribe(() => console.log('Update state', store.getState()));
 
 // update the store by dispatching an action
 store.dispatch(buyCake());
