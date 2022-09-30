@@ -1,6 +1,7 @@
 const { createStore } = require("redux");
 const produce = require('immer').produce;
 
+// state
 const initialState = {
     name: 'Vishwas',
     address: {

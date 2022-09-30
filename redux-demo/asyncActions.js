@@ -4,6 +4,7 @@ const applyMiddleware = redux.applyMiddleware
 const thunkMiddleware = require('redux-thunk').default
 const axios = require('axios')
 
+// state
 const initialState = {
     loading: false,
     users: [],

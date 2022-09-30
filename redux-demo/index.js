@@ -50,6 +50,7 @@ function restockIceCream(qty = 1) {
 //     numOfCakes: 10
 // }
 
+//state of the application
 const initialCakeState = {
     numOfCakes: 10
 }
