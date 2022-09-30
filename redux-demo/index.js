@@ -7,14 +7,22 @@ const logger = reduxLogger.createLogger()
 
 // Actions
 const BUY_CAKE = 'BUY_CAKE'
+const CAKE_RESTOCKED = 'CAKE_RESTOCKED'
 const BUY_ICECREAM = 'BUY_ICECREAM'
 
 // Action creator
 function buyCake() {
     return {
         type: BUY_CAKE,
-        info: 'First redux action'  // payload
-        // quantity: 1
+        // info: 'First redux action'  // payload
+        payload: 1
+    }
+}
+
+function restockCake(qty = 1) {
+    return {
+        type: CAKE_RESTOCKED,
+        payload: qty,
     }
 }
 
@@ -46,6 +54,11 @@ const initialIcecreamState = {
 //         case BUY_CAKE: return {
 //             ...state,
 //             numOfCakes: state.numOfCakes - 1
+//         }
+
+//         case CAKE_RESTOCKED: return {
+//             ...state,
+//             numOfCakes: state.numOfCakes + action.payload,
 //         }
 
 //         default: return state;
@@ -98,6 +111,8 @@ const unSubscribe = store.subscribe(() => console.log('Update state', store.getS
 store.dispatch(buyCake());
 store.dispatch(buyCake());
 store.dispatch(buyCake());
+store.dispatch(restockCake(3));
+
 store.dispatch(buyIceCream());
 store.dispatch(buyIceCream());
 
