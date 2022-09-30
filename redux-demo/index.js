@@ -12,6 +12,7 @@ const BUY_CAKE = 'BUY_CAKE'
 const CAKE_RESTOCKED = 'CAKE_RESTOCKED'
 
 const BUY_ICECREAM = 'BUY_ICECREAM'
+const ICECREAM_RESTOCKED = 'ICECREAM_RESTOCKED'
 
 // Action creator
 function buyCake() {
@@ -29,9 +30,17 @@ function restockCake(qty = 1) {
     }
 }
 
-function buyIceCream() {
+function buyIceCream(qty = 1) {
     return {
-        type: BUY_ICECREAM
+        type: BUY_ICECREAM,
+        payload: qty,
+    }
+}
+
+function restockIceCream(qty = 1) {
+    return {
+        type: ICECREAM_RESTOCKED,
+        payload: qty,
     }
 }
 
@@ -46,7 +55,7 @@ const initialCakeState = {
 }
 
 const initialIcecreamState = {
-    numOfIceCream: 20
+    numOfIceCreams: 20
 }
 
 // reducer function
@@ -69,10 +78,14 @@ const initialIcecreamState = {
 // }
 
 const cakeReducer = (state = initialCakeState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case BUY_CAKE: return {
             ...state,
             numOfCakes: state.numOfCakes - 1
+        }
+        case CAKE_RESTOCKED: return {
+            ...state,
+            numOfCakes: state.numOfCakes + action.payload,
         }
 
         default: return state;
@@ -80,10 +93,15 @@ const cakeReducer = (state = initialCakeState, action) => {
 }
 
 const iceCreamReducer = (state = initialIcecreamState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case BUY_ICECREAM: return {
             ...state,
-            numOfIceCream: state.numOfIceCream - 1
+            numOfIceCreams: state.numOfIceCreams - 1
+        }
+
+        case ICECREAM_RESTOCKED: return {
+            ...state,
+            numOfIceCreams: state.numOfIceCreams + action.payload,
         }
 
         default: return state;
