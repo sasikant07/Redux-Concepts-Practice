@@ -1,6 +1,8 @@
 const redux = require('redux');
 const reduxLogger = require('redux-logger')
 const createStore = redux.createStore
+const bindActionCreators = redux.bindActionCreators
+
 const combineReducers = redux.combineReducers
 const middleware = redux.applyMiddleware
 const logger = reduxLogger.createLogger()
@@ -112,6 +114,13 @@ store.dispatch(buyCake());
 store.dispatch(buyCake());
 store.dispatch(buyCake());
 store.dispatch(restockCake(3));
+
+// ********* This is an alternative method to the line number 113, 114, 115, 116
+// const actions = bindActionCreators({buyCake, restockCake}, store.dispatch);
+// actions.buyCake();
+// actions.buyCake();
+// actions.buyCake();
+// actions.restockCake(3);
 
 store.dispatch(buyIceCream());
 store.dispatch(buyIceCream());
