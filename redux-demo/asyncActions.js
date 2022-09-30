@@ -64,11 +64,11 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-// Asyncronous action creator for data fetching ot peforming side effects
+// Asyncronous action creator for data fetching or peforming side effects
 
 const fetchUsers = () => {
     return function (dispatch) {
-        dispatch(fetchUsersRequest())
+        dispatch(fetchUsersRequest())   // this will make loading to true
         axios.get(`https://jsonplaceholder.typicode.com/users`)
             .then(response => {
                 // response.data is the array of users
